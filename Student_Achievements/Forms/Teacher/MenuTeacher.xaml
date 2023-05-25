@@ -1,0 +1,14 @@
+﻿<Window x:Class="Student_Achievements.MenuTeacher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Меню классного руководителя" Height="445" Width="900" FontFamily="Courier New" FontSize="24" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid Margin="0,0,10,6">
+        <Button x:Name="ButGroup" Content="Группа" HorizontalAlignment="Left" Margin="470,12,0,0" VerticalAlignment="Top" Width="365" Height="60" FontSize="24" FontFamily="Courier New" FontWeight="Bold" Click="ButGroup_Click"/>
+        <Button x:Name="ButStudent" Content="Список студентов" HorizontalAlignment="Left" Margin="470,77,0,0" VerticalAlignment="Top" Width="365" Height="60" FontSize="24" FontFamily="Courier New" FontWeight="Bold" Click="ButStudent_Click"/>
+        <Button x:Name="ButCource" Content="Курсы" HorizontalAlignment="Left" Margin="470,142,0,0" VerticalAlignment="Top" Width="365" Height="60" FontSize="24" FontFamily="Courier New" FontWeight="Bold" Click="ButCource_Click"/>
+        <Button x:Name="ButEvent" Content="Мероприятия" HorizontalAlignment="Left" Margin="470,207,0,0" VerticalAlignment="Top" Width="365" Height="60" FontSize="24" FontFamily="Courier New" FontWeight="Bold" Click="ButEvent_Click"/>
+        <Button x:Name="ButReport" Content="Отчеты" HorizontalAlignment="Left" Margin="470,272,0,0" VerticalAlignment="Top" Width="365" Height="60" FontSize="24" FontFamily="Courier New" FontWeight="Bold" Click="ButReport_Click"/>
+        <Button x:Name="ButChangeUser" Content="Выход из учетной записи" HorizontalAlignment="Left" Margin="470,339,0,0" VerticalAlignment="Top" Width="365" Height="60" FontSize="24" FontFamily="Courier New" FontWeight="Bold" Click="ButChangeUser_Click"/>
+
+    </Grid>
+</Window>

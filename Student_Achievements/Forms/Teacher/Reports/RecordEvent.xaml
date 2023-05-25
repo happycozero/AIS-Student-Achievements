@@ -1,0 +1,74 @@
+﻿<Window x:Class="Student_Achievements.RecordEvent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Учет мероприятий" Height="750" Width="1000" FontFamily="Courier New" FontSize="24" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Grid Margin="0,0,2,5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DataGrid HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="210" Width="970">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Уч. год" Width="*" FontWeight="Bold"/>
+                <DataGridTextColumn Header="Мероприятие" Width="*" FontWeight="Bold"/>
+                <DataGridTextColumn Header="Уровень" Width="*" FontWeight="Bold"/>
+                <DataGridTextColumn Header="Место" Width="*" FontWeight="Bold"/>
+                <DataGridTextColumn Header="Код ЛР" Width="*" FontWeight="Bold"/>
+                <DataGridTextColumn Header="Участники" Width="*" FontWeight="Bold"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Header="Фильтр" HorizontalAlignment="Left" Height="199" Margin="10,396,0,0" VerticalAlignment="Top" Width="502" FontWeight="Bold">
+            <Grid HorizontalAlignment="Left" Height="164" Margin="5,0,-2,0" VerticalAlignment="Top" Width="487">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="по уч. годам:" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,65,0,0" TextWrapping="Wrap" Text="по участникам:" VerticalAlignment="Top"/>
+                <ComboBox HorizontalAlignment="Left" Margin="197,9,0,0" VerticalAlignment="Top" Width="280" Height="32"/>
+                <RadioButton Content="Вся группа" HorizontalAlignment="Left" Margin="217,70,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
+                <RadioButton Content="Один/несколько" HorizontalAlignment="Left" Margin="217,101,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
+                <RadioButton Content="Очистить фильтр" HorizontalAlignment="Left" Margin="217,132,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Сортировка" HorizontalAlignment="Left" Height="110" Margin="10,601,0,0" VerticalAlignment="Top" Width="502" FontWeight="Bold">
+            <Grid Height="80" Margin="0,0,-2,0" VerticalAlignment="Top">
+                <TextBlock HorizontalAlignment="Left" Margin="10,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="по номеру ЛР"/><Run Text=":"/></TextBlock>
+                <ComboBox HorizontalAlignment="Left" Margin="202,17,0,0" VerticalAlignment="Top" Width="280" FontWeight="Normal"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Поиск" HorizontalAlignment="Left" Height="199" Margin="517,396,0,0" VerticalAlignment="Top" Width="463" FontWeight="Bold">
+            <Grid HorizontalAlignment="Left" Height="149" Margin="0,0,-2,0" VerticalAlignment="Top" Width="453">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Поиск:"/>
+                <TextBox HorizontalAlignment="Left" Height="32" Margin="10,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="433" FontWeight="Normal"/>
+                <ComboBox HorizontalAlignment="Left" Margin="101,9,0,0" VerticalAlignment="Top" Width="342" Height="32" FontWeight="Normal"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Учет" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="95" Width="970" FontWeight="Bold">
+            <Grid Height="58" Margin="10,0,-2,0" VerticalAlignment="Top">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="По годам:" VerticalAlignment="Top" FontSize="24" FontFamily="Courier New" FontWeight="Bold"/>
+                <ComboBox HorizontalAlignment="Left" Margin="145,8,0,0" VerticalAlignment="Top" Width="150" FontSize="24"/>
+                <TextBlock HorizontalAlignment="Left" Margin="342,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontFamily="Courier New" FontWeight="Bold"><Run Text="Группа"/><Run Text=":"/></TextBlock>
+                <ComboBox HorizontalAlignment="Left" Margin="448,8,0,0" VerticalAlignment="Top" Width="150" FontSize="24"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Функции" HorizontalAlignment="Left" Margin="517,601,0,0" VerticalAlignment="Top" Height="110" Width="463" FontWeight="Bold">
+            <Grid HorizontalAlignment="Left" Height="80" Margin="5,0,-2,0" VerticalAlignment="Top" Width="448">
+                <Button Content="Вывод в Excel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" FontWeight="Bold" Margin="10,10,0,0"/>
+                <Button Content="В меню" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" FontWeight="Bold" Margin="238,10,0,0"/>
+            </Grid>
+        </GroupBox>
+        <Label Content="1"  HorizontalAlignment="Left" Margin="45,328,0,0" VerticalAlignment="Top" Foreground="#FFD09CFA" Height="31"/>
+        <Label Content="2" HorizontalAlignment="Left" Margin="69,328,0,0" VerticalAlignment="Top" Foreground="#FFD09CFA" Height="31"/>
+        <Label Content="3" HorizontalAlignment="Left" Margin="93,328,0,0" VerticalAlignment="Top" Foreground="#FFD09CFA" Height="31">
+            <Label.Background>
+                <ImageBrush/>
+            </Label.Background>
+        </Label>
+        <Button x:Name="ArrowLeft" Content="&lt;"  HorizontalAlignment="Left" Margin="10,331,0,0" VerticalAlignment="Top" Width="35" Background="White" BorderBrush="White" Foreground="#FFD09CFA"/>
+        <Button x:Name="ArrowLeft_Copy" Content=">" HorizontalAlignment="Left" Margin="117,330,0,0" VerticalAlignment="Top" Width="35" Background="White" BorderBrush="White" Foreground="#FFD09CFA"/>
+    </Grid>
+</Window>

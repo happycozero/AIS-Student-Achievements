@@ -1,0 +1,27 @@
+﻿<Window x:Name="CaptchForm" x:Class="Student_Achievements.Forms.Captch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Капча" Height="325" Width="460" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" FontSize="24" FontFamily="Courier New" Loaded="Captch_Loaded" Closing="CaptchForm_Closing">
+    <Grid>
+        <Button x:Name="ButInputCaptch" Content="Ввести капчу" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Width="370" Height="50" FontWeight="Bold" Click="ButInputCaptch_Click"/>
+        <TextBox x:Name="tb_captch" HorizontalAlignment="Left" Height="45" Margin="10,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="370">
+            <TextBox.Background>
+                <ImageBrush/>
+            </TextBox.Background>
+        </TextBox>
+        <Label Content="Введите текст с картинки:" HorizontalAlignment="Left" Margin="5,138,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="375"/>
+        <Label x:Name="label_captch" Content="Label" HorizontalAlignment="Center" Margin="35,10,35,0" VerticalAlignment="Top" Height="75" Width="375" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="36" Foreground="#FFF4FF0A" FontWeight="Bold">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFF7400" Offset="0.165"/>
+                    <GradientStop Color="#FF5EB95A" Offset="0.779"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Button x:Name="ButRefresh" Content="" HorizontalAlignment="Left" Margin="385,175,0,0" VerticalAlignment="Top" Width="50" Height="45" Click="ButRefresh_Click">
+            <Button.Foreground>
+                <ImageBrush/>
+            </Button.Foreground>
+        </Button>
+    </Grid>
+</Window>

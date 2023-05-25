@@ -1,0 +1,43 @@
+﻿<Window x:Class="Student_Achievements.Student"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Студенты" Height="700" Width="1030" FontSize="24" FontFamily="Courier New" Loaded="Window_Loaded" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="dgv_student" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Height="317" Width="997" FontFamily="Courier New" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="dgv_student_SelectionChanged" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="*" Binding="{Binding ID}" />
+                <DataGridTextColumn Header="ФИО студента" Width="*" Binding="{Binding ФИО студента}" />
+                <DataGridTextColumn Header="Группа" Width="105" Binding="{Binding Группа}" />
+                <DataGridTextColumn Header="Статус" Width="140" Binding="{Binding Статус}" />
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,477,0,0" TextWrapping="Wrap" Text="Количество записей:" VerticalAlignment="Top" FontFamily="Courier New" Height="27" Width="274" FontWeight="Bold"/>
+        <Button x:Name="ButMenu" Content="В меню" HorizontalAlignment="Left" Margin="782,592,0,0" VerticalAlignment="Top" Width="225" FontSize="24" Height="50" FontFamily="Courier New" FontWeight="Bold" Click="ButMenu_Click"/>
+        <GroupBox Header="Добавление студента" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="140" Width="997" FontWeight="Bold">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" Margin="24,10,0,0" TextWrapping="Wrap" Text="ФИО:" VerticalAlignment="Top" FontFamily="Courier New" FontWeight="Bold"/>
+                <TextBox x:Name="tb_fio_student" HorizontalAlignment="Left" Height="32" Margin="87,8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="890" FontFamily="Courier New" FontWeight="Normal" PreviewTextInput="tb_fio_student_PreviewTextInput" MaxLength="100"/>
+                <TextBlock HorizontalAlignment="Left" Margin="342,65,0,0" TextWrapping="Wrap" Text="Статус:" VerticalAlignment="Top" FontFamily="Courier New" FontWeight="Bold"/>
+                <ComboBox x:Name="cb_student_status" HorizontalAlignment="Left" Margin="448,63,0,0" VerticalAlignment="Top" Width="300" FontFamily="Courier New" FontWeight="Normal" Height="32"/>
+                <TextBlock HorizontalAlignment="Left" Margin="24,65,0,0" TextWrapping="Wrap" Text="Группа:" VerticalAlignment="Top" FontFamily="Courier New" FontWeight="Bold"/>
+                <ComboBox x:Name="cb_group_code" HorizontalAlignment="Left" Margin="130,63,0,0" VerticalAlignment="Top" Width="190" FontFamily="Courier New" FontWeight="Normal" Height="32"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Функции" HorizontalAlignment="Left" Margin="10,554,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="100" Width="732">
+            <Grid HorizontalAlignment="Left" Height="56" Margin="10,10,0,0" VerticalAlignment="Top" Width="702">
+                <Button x:Name="ButAdd" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" FontSize="24" Height="50" FontFamily="Courier New" FontWeight="Bold" Click="ButAdd_Click"/>
+                <Button x:Name="ButEdit" Content="Редактировать" HorizontalAlignment="Left" Margin="238,0,0,0" VerticalAlignment="Top" Width="225" FontSize="24" Height="50" FontFamily="Courier New" FontWeight="Bold" Click="ButEdit_Click"/>
+                <Button x:Name="ButDel" Content="Удалить" HorizontalAlignment="Left" Margin="476,0,0,0" VerticalAlignment="Top" Width="225" FontSize="24" Height="50" FontFamily="Courier New" FontWeight="Bold" Click="ButDel_Click"/>
+            </Grid>
+        </GroupBox>
+        <Label x:Name="count_student" Content="Lab" HorizontalAlignment="Left" Margin="289,473,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
