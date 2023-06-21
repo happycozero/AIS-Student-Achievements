@@ -1,0 +1,273 @@
+﻿<Window x:Class="Student_Achievements.Forms.Administrator.Guides.ListResult"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Перечень ЛР" Height="855" Width="1305" Loaded="Window_Loaded" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" FontFamily="Segoe UI" FontSize="22" Icon="pack://siteoforigin:,,,/Resources/student-achievements-icon.png">
+    <Grid>
+        <DataGrid x:Name="DgvListResult" HorizontalAlignment="Left" Height="338" Margin="10,300,0,0" VerticalAlignment="Top" Width="1277" SelectionChanged="dgv_list_result_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False"
+                  x:FieldModifier="public" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" CanUserSortColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="*" Binding="{Binding [ID]}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" TextTrimming="WordEllipsis" TextAlignment="Center"/>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Код ЛР" Width="110" Binding="{Binding '[Код ЛР]'}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" TextTrimming="WordEllipsis" TextAlignment="Center"/>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Специальность" Width="*" Binding="{Binding '[Специальность]'}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" TextTrimming="WordEllipsis" TextAlignment="Center"/>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Описание" Width="*" Binding="{Binding '[Описание]'}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" TextTrimming="WordEllipsis" TextAlignment="Center"/>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,650,0,0" TextWrapping="Wrap" Text="Количество записей:" VerticalAlignment="Top" FontFamily="Segoe UI" FontWeight="Bold"/>
+        <Button x:Name="ButBack" Content="В справочники" HorizontalAlignment="Left" Margin="1063,752,0,0" VerticalAlignment="Top" Width="224" FontSize="22" Height="50" FontFamily="Segoe UI" FontWeight="Bold" Click="ButBack_Click" TabIndex="8">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border x:Name="border" Background="#FFAFD3E2" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#146C94"/>
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <GroupBox Header="Функции" HorizontalAlignment="Left" Margin="10,710,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="105" Width="845">
+            <Grid HorizontalAlignment="Left" Height="56" Margin="10,10,0,-2" VerticalAlignment="Top" Width="822">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="83*"/>
+                    <ColumnDefinition Width="328*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="ButAdd" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" FontSize="22" Height="50" FontFamily="Segoe UI" FontWeight="Bold" Click="ButAdd_Click" TabIndex="4" Grid.ColumnSpan="2">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <Border x:Name="border" Background="#FFAFD3E2" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#146C94"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="ButEdit" Content="Редактировать" HorizontalAlignment="Left" Margin="39.478,0,0,6" Width="200" FontSize="22" FontFamily="Segoe UI" FontWeight="Bold" Click="ButEdit_Click" TabIndex="5" Grid.Column="1">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <Border x:Name="border" Background="#FFAFD3E2" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#146C94"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="ButDel" Content="Удалить" HorizontalAlignment="Left" Margin="244.478,0,0,0" VerticalAlignment="Top" Width="200" FontSize="22" Height="50" FontFamily="Segoe UI" FontWeight="Bold" Click="ButDel_Click" TabIndex="6" Grid.Column="1">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <Border x:Name="border" Background="#FFAFD3E2" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#146C94"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="ButClear" Content="Очистить" HorizontalAlignment="Left" Margin="449.478,0,0,0" VerticalAlignment="Top" Width="200" FontSize="22" Height="50" FontFamily="Segoe UI" FontWeight="Bold" Click="ButClear_Click" TabIndex="7" Grid.Column="1">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <Border x:Name="border" Background="#FFAFD3E2" BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#146C94"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Добавление личностных результатов" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Height="192" Width="1277" FontWeight="Bold">
+            <Grid Margin="0,0,-2,-2">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Код ЛР:" VerticalAlignment="Top" FontSize="22" FontFamily="Segoe UI" FontWeight="Bold"/>
+                <TextBox x:Name="TbResultCode" HorizontalAlignment="Left" Height="32" Margin="98,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" FontSize="22" FontWeight="Normal" MaxLength="4" PreviewTextInput="tb_result_code_PreviewTextInput" MaxLines="1" PreviewKeyDown="TbResultCode_PreviewKeyDown" TabIndex="1">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect ShadowDepth="2" BlurRadius="3" Opacity="0.5"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsKeyboardFocused" Value="False"/>
+                                        <Condition Property="Text" Value=""/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Effect" Value="{x:Null}"/>
+                                </MultiTrigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+                <TextBlock HorizontalAlignment="Left" Margin="295,10,0,0" TextWrapping="Wrap" Text="Специальность:" VerticalAlignment="Top" FontSize="22" FontFamily="Segoe UI" FontWeight="Bold"/>
+                <ComboBox x:Name="CbSpecialization" HorizontalAlignment="Left" Margin="470,10,0,0" VerticalAlignment="Top" Width="787" FontSize="22" FontWeight="Normal" TabIndex="2"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,63,0,0" TextWrapping="Wrap" Text="Описание:" VerticalAlignment="Top" FontSize="22" FontFamily="Segoe UI" FontWeight="Bold"/>
+                <TextBox x:Name="TbDescription" HorizontalAlignment="Left" Height="82" Margin="126,66,0,0"
+         TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="1131" FontSize="22"
+         FontWeight="Normal" MaxLength="250"
+         PreviewKeyDown="tb_description_PreviewKeyDown"
+         PreviewTextInput="tb_description_PreviewTextInput" TabIndex="3">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect ShadowDepth="2" BlurRadius="3" Opacity="0.5"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsKeyboardFocused" Value="False"/>
+                                        <Condition Property="Text" Value=""/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Effect" Value="{x:Null}"/>
+                                </MultiTrigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+            </Grid>
+        </GroupBox>
+        <Label x:Name="CountListResult" Content="0" HorizontalAlignment="Left" Margin="234,646,0,0" VerticalAlignment="Top"
+               x:FieldModifier="public" />
+        <Grid Height="88" Margin="10,10,10,0" VerticalAlignment="Top">
+            <TextBlock x:Name="tbFIO" HorizontalAlignment="Left" Margin="100,10,0,0" TextWrapping="Wrap" Text="ФИО" VerticalAlignment="Top" FontWeight="Normal"/>
+            <TextBlock x:Name="tbAccess" HorizontalAlignment="Left" Margin="100,49,0,0" TextWrapping="Wrap" Text="Доступ" VerticalAlignment="Top" FontWeight="Normal"/>
+            <Image HorizontalAlignment="Left" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" Width="70" Source="pack://siteoforigin:,,,/Resources/student-achievements-icon.png"/>
+        </Grid>
+    </Grid>
+</Window>
