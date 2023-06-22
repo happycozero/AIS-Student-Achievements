@@ -356,9 +356,6 @@
   <ItemGroup>
     <Resource Include="logo.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\fon_captch.png" />
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Resource Include="Photo\2017 ЗАМТ 4.jpg">

@@ -56,10 +56,10 @@
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/captch.png"/>
             </Label.Background>
         </Label>
-        <Button x:Name="ButRefresh" Content="" HorizontalAlignment="Left" Margin="385,175,0,0" VerticalAlignment="Top" Width="50" Height="45" Click="ButRefresh_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/refresh.png"/>
-            </Button.Background>
+        <Button x:Name="ButRefresh" HorizontalAlignment="Left" Margin="385,175,0,0" VerticalAlignment="Top" Width="50" Height="45" Click="ButRefresh_Click">
+            <Button.Content>
+                <Image Source="pack://siteoforigin:,,,/Resources/refresh.png"/>
+            </Button.Content>
         </Button>
     </Grid>
 </Window>

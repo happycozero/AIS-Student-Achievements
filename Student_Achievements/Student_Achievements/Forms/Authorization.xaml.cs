@@ -60,8 +60,15 @@ namespace Student_Achievements
 
         private void ButExitProgram_Click(object sender, RoutedEventArgs e)
         {
-            BackupExportSQL BackupExportSQL = new BackupExportSQL();
-            BackupExportSQL.getBackup();
+            try
+            {
+                BackupExportSQL backupExporter = new BackupExportSQL();
+                backupExporter.GetBackup();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка при выполнении резервного копирования: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите закрыть приложение?", "Подтверждение закрытия", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
@@ -136,8 +143,15 @@ namespace Student_Achievements
 
                         if (role_user == 3)
                         {
-                            BackupExportSQL backup_sql = new BackupExportSQL();
-                            backup_sql.getBackup();
+                            try
+                            {
+                                BackupExportSQL backupExporter = new BackupExportSQL();
+                                backupExporter.GetBackup();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Произошла ошибка при выполнении резервного копирования: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
 
                             var MenuAdminForm = new MenuAdministrator();
                             Application.Current.MainWindow = MenuAdminForm;

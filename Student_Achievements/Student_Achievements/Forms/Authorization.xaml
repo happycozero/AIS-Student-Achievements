@@ -80,6 +80,32 @@
             </TextBox.Template>
         </TextBox>
         <TextBlock Margin="149,97,151,0" Text="Пароль" VerticalAlignment="Top" FontSize="22" Height="38" FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap"/>
-        <PasswordBox x:Name="TbPassword" Margin="54,135,48,0" FontSize="22" TabIndex="1" Height="34" VerticalAlignment="Top" Password="" PreviewTextInput="TbPassword_PreviewTextInput"/>
+        <PasswordBox x:Name="TbPassword" Margin="54,135,48,0" FontSize="22" TabIndex="1" Height="34" VerticalAlignment="Top" Password="" PreviewTextInput="TbPassword_PreviewTextInput">
+            <PasswordBox.Template>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                        <ScrollViewer x:Name="PART_ContentHost"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="2" BlurRadius="3" Opacity="0.5"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsKeyboardFocused" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Effect" Value="{x:Null}"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </PasswordBox.Template>
+        </PasswordBox>
     </Grid>
 </Window>

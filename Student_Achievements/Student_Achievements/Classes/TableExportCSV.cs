@@ -12,7 +12,7 @@ namespace Student_Achievements.Classes
     {
         public void ExportAllTablesToCsv(string exportPath)
         {
-            string backupFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "backup_table_csv");
+            string backupFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Резервная копия таблиц CSV");
 
             // Создаем папку backup_table_csv, если её не существует
             if (!Directory.Exists(backupFolder))

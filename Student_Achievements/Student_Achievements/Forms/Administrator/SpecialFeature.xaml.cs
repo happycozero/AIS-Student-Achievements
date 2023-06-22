@@ -93,13 +93,21 @@ namespace Student_Achievements.Forms
 
         private void ButBackupCopy_Click(object sender, RoutedEventArgs e)
         {
-            BackupExportSQL back = new BackupExportSQL();
-            back.getBackup();
+            try
+            {
+                BackupExportSQL backupExporter = new BackupExportSQL();
+                backupExporter.GetBackup();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("Произошла ошибка при выполнении резервного копирования: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ButExport_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
     }
 }

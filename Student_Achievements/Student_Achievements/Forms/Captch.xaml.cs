@@ -49,6 +49,11 @@ namespace Student_Achievements.Forms
             }
 
             LabelCaptch.Content = captch;
+
+            // Восстановление картинки
+            Uri imageUri = new Uri("pack://siteoforigin:,,,/Resources/refresh.png");
+            ImageSource imageSource = new BitmapImage(imageUri);
+            ButRefresh.Content = new Image { Source = imageSource };
         }
 
         private void CaptchForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
