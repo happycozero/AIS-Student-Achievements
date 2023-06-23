@@ -800,10 +800,22 @@ namespace Student_Achievements
                             {
                                 connection.OpenConnect();
 
-                                string sql = "SELECT id_list_result FROM list_result WHERE list_result_code = '" + selectedLR[i] + "';";
+                                string sql = "SELECT id_list_result, list_result_description FROM list_result WHERE list_result_code = '" + selectedLR[i] + "';";
                                 MySqlCommand com = new MySqlCommand(sql, connection.GetConnect());
+                                MySqlDataReader reader = com.ExecuteReader();
 
-                                selectedLR2[i] = com.ExecuteScalar().ToString();
+                                if (reader.Read())
+                                {
+                                    selectedLR2[i] = reader["id_list_result"].ToString();
+                                    string description = reader["list_result_description"].ToString();
+                                    // Используйте значение description по вашему усмотрению
+                                }
+                                else
+                                {
+                                    selectedLR2[i] = "";
+                                }
+
+                                reader.Close();
                             }
                         }
                         else
@@ -813,13 +825,13 @@ namespace Student_Achievements
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    ;
-                    // Обработка исключения
+                    MessageBox.Show("При загрузке модального окна выбора личностных результатов произошла ошибка: " + ex.Message, "Ошибка загрузки модального окна", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
+
 
         private void DgvEvent_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {

@@ -26,8 +26,6 @@
         </Button>
         <GroupBox Header="Экспорт данных" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="335" Width="497" FontWeight="Bold">
             <Grid HorizontalAlignment="Left" Width="482" Margin="5,0,-2,0" Height="293" VerticalAlignment="Top">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Выберите таблицу:" VerticalAlignment="Top" Margin="122,19,0,0"/>
-                <ComboBox x:Name="cbTableExp" HorizontalAlignment="Left" Margin="86,60,0,0" VerticalAlignment="Top" Width="306" FontWeight="Normal"/>
                 <Button x:Name="ButWay" Content="Выберите путь" HorizontalAlignment="Left" Margin="86,103,0,0" VerticalAlignment="Top" Width="306" FontWeight="Bold" Height="40" FontSize="22" Click="ButWay_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">

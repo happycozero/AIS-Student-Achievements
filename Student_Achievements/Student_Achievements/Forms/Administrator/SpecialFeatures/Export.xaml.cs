@@ -2,6 +2,7 @@
 using Student_Achievements.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,36 +33,6 @@ namespace Student_Achievements.Forms.Administrator.SpecialFeatures
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             WindowHelper.RemoveSysMenu(new System.Windows.Interop.WindowInteropHelper(this).Handle);
-            Fill_Export();
-        }
-
-        public void Fill_Export()
-        {
-            cbTableExp.Items.Clear();
-
-            DB_Connect connect = new DB_Connect();
-            connect.OpenConnect();
-
-            string sql = "SHOW TABLES;";
-            MySqlCommand com = new MySqlCommand(sql, connect.GetConnect());
-            MySqlDataReader reader = null;
-
-            try
-            {
-                reader = com.ExecuteReader();
-                while (reader.Read())
-                {
-                    cbTableExp.Items.Add(reader[0].ToString());
-                }
-            }
-            finally
-            {
-                if (reader != null)
-                {
-                    reader.Close();
-                }
-                connect.CloseConnect();
-            }
         }
 
         private void ButWay_Click(object sender, RoutedEventArgs e)
@@ -77,80 +48,89 @@ namespace Student_Achievements.Forms.Administrator.SpecialFeatures
 
         private void ButExport_Click(object sender, RoutedEventArgs e)
         {
-            if (cbTableExp.Text == "")
-            {
-                MessageBox.Show("Предупреждение! Выберите таблицу для экспорта!", "Экспорт БД", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-
-            if (cbTableExp.Text == "")
+            if (string.IsNullOrEmpty(tbExport.Text))
             {
                 MessageBox.Show("Предупреждение! Выберите путь для экспорта.", "Экспорт БД", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
 
-            if (cbRazd.Text == "")
+            if (cbRazd.SelectedIndex == -1)
             {
                 MessageBox.Show("Предупреждение! Выберите разделитель для экспорта.", "Экспорт БД", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
 
-            else
+            try
             {
-                try
+                string exportFolderPath = tbExport.Text.Replace("/", "\\");
+
+                using (DB_Connect connect = new DB_Connect())
                 {
-                    string temp = tbExport.Text;
-                    tbExport.Text = temp.Replace("/", "\\");
-                    DB_Connect connect = new DB_Connect();
                     connect.OpenConnect();
 
-                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM " + cbTableExp.Text, connect.GetConnect());
-                    MySqlDataReader reader = cmd.ExecuteReader();
+                    // Получаем список всех таблиц в базе данных
+                    DataTable schema = connect.GetConnect().GetSchema("Tables");
+                    string[] tableNames = schema.AsEnumerable()
+                        .Where(row => row["TABLE_SCHEMA"].ToString() == connect.GetConnect().Database)
+                        .Select(row => row["TABLE_NAME"].ToString())
+                        .ToArray();
 
-                    string filePath = tbExport.Text + "//" + cbTableExp.Text + ".csv";
-                    StreamWriter sw = new StreamWriter(filePath);
-
-                    // записываем заголовки столбцов в CSV файл
-                    for (int i = 0; i < reader.FieldCount; i++)
+                    // Проверяем, что в базе данных есть таблицы
+                    if (tableNames.Length == 0)
                     {
-                        sw.Write(reader.GetName(i));
-                        if (i < reader.FieldCount - 1)
-                        {
-                            sw.Write(cbRazd.Text);
-                        }
+                        MessageBox.Show("Предупреждение! В базе данных отсутствуют таблицы.", "Экспорт БД", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
                     }
-                    sw.WriteLine();
 
-                    // записываем данные из таблицы в CSV файл
-                    while (reader.Read())
+                    foreach (string tableName in tableNames)
                     {
+                        MySqlCommand cmd = new MySqlCommand("SELECT * FROM `" + tableName + "`", connect.GetConnect());
+                        MySqlDataReader reader = cmd.ExecuteReader();
+
+                        string filePath = System.IO.Path.Combine(exportFolderPath, tableName + ".csv");
+                        StreamWriter sw = new StreamWriter(filePath);
+
+                        // записываем заголовки столбцов в CSV файл
                         for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            if (!reader.IsDBNull(i))
-                            {
-                                sw.Write(reader.GetValue(i).ToString());
-                            }
+                            sw.Write("`" + reader.GetName(i) + "`");
                             if (i < reader.FieldCount - 1)
                             {
                                 sw.Write(cbRazd.Text);
                             }
                         }
                         sw.WriteLine();
+
+                        // записываем данные из таблицы в CSV файл
+                        while (reader.Read())
+                        {
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                if (!reader.IsDBNull(i))
+                                {
+                                    sw.Write(reader.GetValue(i).ToString());
+                                }
+                                if (i < reader.FieldCount - 1)
+                                {
+                                    sw.Write(cbRazd.Text);
+                                }
+                            }
+                            sw.WriteLine();
+                        }
+
+                        sw.Close();
+                        reader.Close();
                     }
-
-                    sw.Close();
-                    reader.Close();
-                    connect.CloseConnect();
-
-                    cbTableExp.SelectedIndex = -1;
-                    tbExport.Clear();
-                    cbRazd.SelectedIndex = -1;
-
-                    MessageBox.Show("Успешно! Экспорт завершен. Файл сохранен по выбранному пути.", "Экспорт БД", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
 
-                catch (Exception msg)
-                {
-                    MessageBox.Show("Возникла ошибка!" + msg.Message, "Ошибка программы", MessageBoxButton.OK, MessageBoxImage.Warning);
+                tbExport.Clear();
+                cbRazd.SelectedIndex = -1;
 
-                }
+                MessageBox.Show("Успешно! Экспорт завершен. Файлы сохранены по выбранному пути.", "Экспорт БД", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Возникла ошибка!" + ex.Message, "Ошибка программы", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

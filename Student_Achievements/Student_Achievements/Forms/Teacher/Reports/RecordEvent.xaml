@@ -96,51 +96,6 @@
         <GroupBox Header="Фильтр:" HorizontalAlignment="Left" Height="150" Margin="10,594,0,0" VerticalAlignment="Top" Width="450" FontWeight="Bold">
             <Grid HorizontalAlignment="Left" Margin="5,0,-2,10" Width="438">
                 <ComboBox x:Name="cbLevelEvent" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="418" Height="38" FontWeight="Normal" TabIndex="5" SelectionChanged="cbLevelEvent_SelectionChanged">
-                    <ComboBox.Template>
-                        <ControlTemplate TargetType="{x:Type ComboBox}">
-                            <Grid>
-                                <Border x:Name="MainBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
-                                    <Grid>
-                                        <ToggleButton x:Name="ToggleButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Focusable="False" ClickMode="Press" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
-                                            <ToggleButton.Template>
-                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                            <ColumnDefinition Width="20" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Border x:Name="Border" Grid.ColumnSpan="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="4" />
-                                                        <Border x:Name="GlyphBorder" Grid.Column="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Padding="5">
-                                                            <Path x:Name="Arrow" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0,0L4,4L8,0z" />
-                                                        </Border>
-                                                    </Grid>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter Property="Data" TargetName="Arrow" Value="M0,4L4,0L8,4z" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsEnabled" Value="False">
-                                                            <Setter Property="Background" TargetName="Border" Value="#EEEEEE" />
-                                                            <Setter Property="BorderBrush" TargetName="Border" Value="#AAAAAA" />
-                                                            <Setter Property="Fill" TargetName="Arrow" Value="#888888" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
-                                                </ControlTemplate>
-                                            </ToggleButton.Template>
-                                        </ToggleButton>
-                                        <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
-                                            <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                                <Border x:Name="DropDownBorder" Background="White" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
-                                                    <ScrollViewer>
-                                                        <ItemsPresenter />
-                                                    </ScrollViewer>
-                                                </Border>
-                                            </Grid>
-                                        </Popup>
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                        </ControlTemplate>
-                    </ComboBox.Template>
                 </ComboBox>
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="По уровню мероприятия:"/>
             </Grid>
@@ -149,51 +104,6 @@
             <Grid Height="80" Margin="0,0,-2,0" VerticalAlignment="Top">
                 <TextBlock HorizontalAlignment="Left" Margin="10,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"><Run Text="по ФИО студента"/><Run Text=":"/></TextBlock>
                 <ComboBox x:Name="cbSort" HorizontalAlignment="Left" Margin="205,16,0,0" VerticalAlignment="Top" Width="454" FontWeight="Normal" TabIndex="7" Height="37" SelectionChanged="cbSort_SelectionChanged">
-                    <ComboBox.Template>
-                        <ControlTemplate TargetType="{x:Type ComboBox}">
-                            <Grid>
-                                <Border x:Name="MainBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
-                                    <Grid>
-                                        <ToggleButton x:Name="ToggleButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Focusable="False" ClickMode="Press" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
-                                            <ToggleButton.Template>
-                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                            <ColumnDefinition Width="20" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Border x:Name="Border" Grid.ColumnSpan="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="4" />
-                                                        <Border x:Name="GlyphBorder" Grid.Column="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Padding="5">
-                                                            <Path x:Name="Arrow" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0,0L4,4L8,0z" />
-                                                        </Border>
-                                                    </Grid>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter Property="Data" TargetName="Arrow" Value="M0,4L4,0L8,4z" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsEnabled" Value="False">
-                                                            <Setter Property="Background" TargetName="Border" Value="#EEEEEE" />
-                                                            <Setter Property="BorderBrush" TargetName="Border" Value="#AAAAAA" />
-                                                            <Setter Property="Fill" TargetName="Arrow" Value="#888888" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
-                                                </ControlTemplate>
-                                            </ToggleButton.Template>
-                                        </ToggleButton>
-                                        <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
-                                            <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                                <Border x:Name="DropDownBorder" Background="White" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
-                                                    <ScrollViewer>
-                                                        <ItemsPresenter />
-                                                    </ScrollViewer>
-                                                </Border>
-                                            </Grid>
-                                        </Popup>
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                        </ControlTemplate>
-                    </ComboBox.Template>
                 </ComboBox>
             </Grid>
         </GroupBox>
@@ -202,51 +112,6 @@
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Поиск по:"/>
                 <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="36" Margin="10,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="433" FontWeight="Normal" IsEnabled="False" TabIndex="6" TextChanged="tbSearch_TextChanged"/>
                 <ComboBox x:Name="cbSearch" HorizontalAlignment="Left" Margin="121,10,0,0" VerticalAlignment="Top" Width="322" Height="36" FontWeight="Normal" TabIndex="5" SelectionChanged="cbSearch_SelectionChanged_1">
-                    <ComboBox.Template>
-                        <ControlTemplate TargetType="{x:Type ComboBox}">
-                            <Grid>
-                                <Border x:Name="MainBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
-                                    <Grid>
-                                        <ToggleButton x:Name="ToggleButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Focusable="False" ClickMode="Press" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
-                                            <ToggleButton.Template>
-                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                            <ColumnDefinition Width="20" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Border x:Name="Border" Grid.ColumnSpan="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="4" />
-                                                        <Border x:Name="GlyphBorder" Grid.Column="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Padding="5">
-                                                            <Path x:Name="Arrow" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0,0L4,4L8,0z" />
-                                                        </Border>
-                                                    </Grid>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter Property="Data" TargetName="Arrow" Value="M0,4L4,0L8,4z" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsEnabled" Value="False">
-                                                            <Setter Property="Background" TargetName="Border" Value="#EEEEEE" />
-                                                            <Setter Property="BorderBrush" TargetName="Border" Value="#AAAAAA" />
-                                                            <Setter Property="Fill" TargetName="Arrow" Value="#888888" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
-                                                </ControlTemplate>
-                                            </ToggleButton.Template>
-                                        </ToggleButton>
-                                        <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
-                                            <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                                <Border x:Name="DropDownBorder" Background="White" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
-                                                    <ScrollViewer>
-                                                        <ItemsPresenter />
-                                                    </ScrollViewer>
-                                                </Border>
-                                            </Grid>
-                                        </Popup>
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                        </ControlTemplate>
-                    </ComboBox.Template>
                 </ComboBox>
             </Grid>
         </GroupBox>
@@ -254,99 +119,9 @@
             <Grid Height="58" Margin="10,0,-2,0" VerticalAlignment="Top">
                 <TextBlock HorizontalAlignment="Left" Margin="346,10,0,0" TextWrapping="Wrap" Text="Курс:" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI" FontWeight="Bold"/>
                 <ComboBox x:Name="CbCource" HorizontalAlignment="Left" Margin="413,10,0,0" VerticalAlignment="Top" Width="220" FontSize="24" TabIndex="2" SelectionChanged="CbCource_SelectionChanged" Height="38">
-                    <ComboBox.Template>
-                        <ControlTemplate TargetType="{x:Type ComboBox}">
-                            <Grid>
-                                <Border x:Name="MainBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
-                                    <Grid>
-                                        <ToggleButton x:Name="ToggleButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Focusable="False" ClickMode="Press" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
-                                            <ToggleButton.Template>
-                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                            <ColumnDefinition Width="20" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Border x:Name="Border" Grid.ColumnSpan="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="4" />
-                                                        <Border x:Name="GlyphBorder" Grid.Column="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Padding="5">
-                                                            <Path x:Name="Arrow" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0,0L4,4L8,0z" />
-                                                        </Border>
-                                                    </Grid>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter Property="Data" TargetName="Arrow" Value="M0,4L4,0L8,4z" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsEnabled" Value="False">
-                                                            <Setter Property="Background" TargetName="Border" Value="#EEEEEE" />
-                                                            <Setter Property="BorderBrush" TargetName="Border" Value="#AAAAAA" />
-                                                            <Setter Property="Fill" TargetName="Arrow" Value="#888888" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
-                                                </ControlTemplate>
-                                            </ToggleButton.Template>
-                                        </ToggleButton>
-                                        <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
-                                            <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                                <Border x:Name="DropDownBorder" Background="White" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
-                                                    <ScrollViewer>
-                                                        <ItemsPresenter />
-                                                    </ScrollViewer>
-                                                </Border>
-                                            </Grid>
-                                        </Popup>
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                        </ControlTemplate>
-                    </ComboBox.Template>
                 </ComboBox>
                 <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI" FontWeight="Bold" Width="100"><Run Text="Группа"/><Run Text=":"/></TextBlock>
                 <ComboBox x:Name="CbGroup" HorizontalAlignment="Left" Margin="110,11,0,0" VerticalAlignment="Top" Width="150" FontSize="24" SelectionChanged="CbGroup_SelectionChanged" TabIndex="1" Height="37">
-                    <ComboBox.Template>
-                        <ControlTemplate TargetType="{x:Type ComboBox}">
-                            <Grid>
-                                <Border x:Name="MainBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
-                                    <Grid>
-                                        <ToggleButton x:Name="ToggleButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Focusable="False" ClickMode="Press" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
-                                            <ToggleButton.Template>
-                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition />
-                                                            <ColumnDefinition Width="20" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <Border x:Name="Border" Grid.ColumnSpan="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="4" />
-                                                        <Border x:Name="GlyphBorder" Grid.Column="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Padding="5">
-                                                            <Path x:Name="Arrow" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0,0L4,4L8,0z" />
-                                                        </Border>
-                                                    </Grid>
-                                                    <ControlTemplate.Triggers>
-                                                        <Trigger Property="IsChecked" Value="True">
-                                                            <Setter Property="Data" TargetName="Arrow" Value="M0,4L4,0L8,4z" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsEnabled" Value="False">
-                                                            <Setter Property="Background" TargetName="Border" Value="#EEEEEE" />
-                                                            <Setter Property="BorderBrush" TargetName="Border" Value="#AAAAAA" />
-                                                            <Setter Property="Fill" TargetName="Arrow" Value="#888888" />
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
-                                                </ControlTemplate>
-                                            </ToggleButton.Template>
-                                        </ToggleButton>
-                                        <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
-                                            <Grid x:Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                                <Border x:Name="DropDownBorder" Background="White" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
-                                                    <ScrollViewer>
-                                                        <ItemsPresenter />
-                                                    </ScrollViewer>
-                                                </Border>
-                                            </Grid>
-                                        </Popup>
-                                    </Grid>
-                                </Border>
-                            </Grid>
-                        </ControlTemplate>
-                    </ComboBox.Template>
                 </ComboBox>
             </Grid>
         </GroupBox>

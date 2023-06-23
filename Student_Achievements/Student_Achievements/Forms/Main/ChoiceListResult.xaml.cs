@@ -26,6 +26,8 @@ namespace Student_Achievements.Forms.Main
         public static string[] LRS = new string[30];
         public static int count = 0;
 
+        public string description_lr;
+
         public ChoiceListResult(List<string> lrs)
         {
             InitializeComponent();
@@ -33,10 +35,15 @@ namespace Student_Achievements.Forms.Main
             // создаем таблицу
             DataTable dt = new DataTable();
 
-            // добавляем столбец ФИО в таблицу (если он не был создан ранее в XAML)
+            // добавляем столбец Код ЛР в таблицу (если он не был создан ранее в XAML)
             if (!dt.Columns.Contains("Код ЛР"))
             {
                 dt.Columns.Add("Код ЛР");
+            }
+            // добавляем столбец Описание в таблицу (если он не был создан ранее в XAML)
+            if (!dt.Columns.Contains("Описание"))
+            {
+                dt.Columns.Add("Описание");
             }
 
             // заполняем таблицу данными из списка
@@ -44,6 +51,7 @@ namespace Student_Achievements.Forms.Main
             {
                 DataRow dr = dt.NewRow();
                 dr["Код ЛР"] = lr;
+                dr["Описание"] = description_lr; // Добавьте это
                 dt.Rows.Add(dr);
             }
 

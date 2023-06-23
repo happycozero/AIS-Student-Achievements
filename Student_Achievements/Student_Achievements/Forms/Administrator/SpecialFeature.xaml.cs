@@ -106,7 +106,10 @@ namespace Student_Achievements.Forms
 
         private void ButExport_Click(object sender, RoutedEventArgs e)
         {
-
+            var exportForm = new Export();
+            System.Windows.Application.Current.MainWindow = exportForm;
+            this.Hide();
+            exportForm.Show();
         }
 
     }
