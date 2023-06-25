@@ -1,4 +1,5 @@
-﻿using Student_Achievements.Classes;
+﻿using MySql.Data.MySqlClient;
+using Student_Achievements.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,8 +27,6 @@ namespace Student_Achievements.Forms.Main
         public static string[] LRS = new string[30];
         public static int count = 0;
 
-        public string description_lr;
-
         public ChoiceListResult(List<string> lrs)
         {
             InitializeComponent();
@@ -40,6 +39,7 @@ namespace Student_Achievements.Forms.Main
             {
                 dt.Columns.Add("Код ЛР");
             }
+
             // добавляем столбец Описание в таблицу (если он не был создан ранее в XAML)
             if (!dt.Columns.Contains("Описание"))
             {
@@ -51,12 +51,29 @@ namespace Student_Achievements.Forms.Main
             {
                 DataRow dr = dt.NewRow();
                 dr["Код ЛР"] = lr;
-                dr["Описание"] = description_lr; // Добавьте это
+                dr["Описание"] = GetLRDescription(lr); // Здесь вызываем метод для получения описания
                 dt.Rows.Add(dr);
             }
 
             // устанавливаем источник данных для DataGrid
             DgvChoiceStudent.ItemsSource = dt.DefaultView;
+        }
+
+        private string GetLRDescription(string lrCode)
+        {
+            using (DB_Connect connection = new DB_Connect())
+            {
+                connection.OpenConnect();
+
+                string sql = "SELECT list_result_description FROM list_result WHERE list_result_code = @code;";
+                MySqlCommand com = new MySqlCommand(sql, connection.GetConnect());
+                com.Parameters.AddWithValue("@code", lrCode);
+                object result = com.ExecuteScalar();
+
+                string description = (result != null) ? result.ToString() : string.Empty;
+
+                return description;
+            }
         }
 
         private void ButClose_Click(object sender, RoutedEventArgs e)

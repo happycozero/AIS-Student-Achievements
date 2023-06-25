@@ -56,9 +56,12 @@ namespace Student_Achievements.Classes
             string sql_role = @"SELECT user_role.role_user_name 
                         FROM `user` 
                         INNER JOIN user_role ON user.user_role = user_role.id_user_role 
-                        WHERE user.id_user = " + Authorization.id_user + ";";
+                        WHERE user.id_user = @userId;";
             MySqlCommand com2 = new MySqlCommand(sql_role, GetConnect());
-            string userAccess = com2.ExecuteScalar().ToString();
+            com2.Parameters.AddWithValue("@userId", Authorization.id_user);
+            object result = com2.ExecuteScalar();
+
+            string userAccess = (result != null) ? result.ToString() : string.Empty;
 
             CloseConnect();
 

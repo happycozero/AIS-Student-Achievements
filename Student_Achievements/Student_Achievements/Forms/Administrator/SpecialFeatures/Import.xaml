@@ -7,22 +7,55 @@
         Title="Импорт данных" Height="455" Width="530" FontSize="22" FontFamily="Segoe UI" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" Icon="pack://siteoforigin:,,,/Resources/student-achievements-icon.png" MinHeight="455" MinWidth="530">
     <Grid>
         <GroupBox Header="Импорт данных" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="335" Width="497" FontWeight="Bold">
-            <Grid HorizontalAlignment="Left" Width="482" Margin="5,0,-2,0" Height="293" VerticalAlignment="Top">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Выберите таблицу:" VerticalAlignment="Top" Margin="128,23,0,0"/>
-                <ComboBox x:Name="cbTable" HorizontalAlignment="Left" Margin="78,60,0,0" VerticalAlignment="Top" Width="306" FontWeight="Normal"/>
-                <Button x:Name="ButChoiceFile" Content="Выбрать файл" HorizontalAlignment="Left" Margin="78,100,0,0" VerticalAlignment="Top" Width="306" FontWeight="Bold" Height="40" Click="ButChoiceFile_Click" Visibility="Hidden"/>
-                <TextBlock HorizontalAlignment="Left" Margin="105,154,0,0" TextWrapping="Wrap" Text="Выберите разделитель:" VerticalAlignment="Top"/>
-                <ComboBox x:Name="cbRazd" HorizontalAlignment="Left" Margin="78,191,0,0" VerticalAlignment="Top" Width="306" FontWeight="Normal">
+            <Grid HorizontalAlignment="Left" Width="477" Margin="5,0,0,0" Height="293" VerticalAlignment="Top">
+                <Button x:Name="ButChoiceFile" Content="Выбрать файл" HorizontalAlignment="Left" Margin="78,100,0,0" VerticalAlignment="Top" Width="306" FontWeight="Bold" Height="40" Visibility="Hidden"/>
+                <TextBox x:Name="tbImport" HorizontalAlignment="Left" Height="23" Margin="99,267,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Visibility="Hidden"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Выберите таблицу:" VerticalAlignment="Top" Margin="129,20,0,0"/>
+                <ComboBox x:Name="cbTable" HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" Width="467" FontWeight="Normal"/>
+                <TextBlock HorizontalAlignment="Left" Margin="112,130,0,0" TextWrapping="Wrap" Text="Выберите разделитель:" VerticalAlignment="Top"/>
+                <ComboBox x:Name="cbRazd" HorizontalAlignment="Left" Margin="5,164,0,0" VerticalAlignment="Top" Width="467" FontWeight="Normal">
                     <ComboBoxItem Content=";"/>
                     <ComboBoxItem Content=","/>
                     <ComboBoxItem Content="#"/>
                     <ComboBoxItem Content="&amp;"/>
                 </ComboBox>
-                <Button x:Name="ButImport" Content="Импорт" HorizontalAlignment="Left" Margin="78,231,0,0" VerticalAlignment="Top" Width="306" Height="40" FontWeight="Bold" FontSize="22" Click="ButImport_Click"/>
-                <TextBox x:Name="tbImport" HorizontalAlignment="Left" Height="23" Margin="99,267,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="246" Visibility="Hidden"/>
+                <Button x:Name="ButImport" Content="Импорт" HorizontalAlignment="Left" Margin="5,243,0,0" VerticalAlignment="Top" Width="467" Height="40" FontWeight="Bold" FontSize="22" Click="ButImport_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid>
+                                <Border x:Name="border" Background="#FFAFD3E2" BorderBrush="{TemplateBinding BorderBrush}"
+                					BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#146C94"/>
+                                    <Setter Property="Foreground" Value="White" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </Grid>
         </GroupBox>
-        <Button x:Name="ButSpecFeat" Content="В спец. возможности" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Width="497" Height="60" FontWeight="Bold" Click="ButSpecFeat_Click"/>
-
+        <Button x:Name="ButSpecFeat" Content="В спец. возможности" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Width="497" Height="60" FontWeight="Bold" Click="ButSpecFeat_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border x:Name="border" Background="#FFAFD3E2" BorderBrush="{TemplateBinding BorderBrush}"
+                					BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#146C94"/>
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Window>

@@ -63,6 +63,9 @@ namespace Student_Achievements.Forms.Administrator.SpecialFeatures
             try
             {
                 string exportFolderPath = tbExport.Text.Replace("/", "\\");
+                string backupFolderName = "backup_tables_" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+                string backupFolderPath = System.IO.Path.Combine(exportFolderPath, backupFolderName);
+                Directory.CreateDirectory(backupFolderPath);
 
                 using (DB_Connect connect = new DB_Connect())
                 {
@@ -87,7 +90,7 @@ namespace Student_Achievements.Forms.Administrator.SpecialFeatures
                         MySqlCommand cmd = new MySqlCommand("SELECT * FROM `" + tableName + "`", connect.GetConnect());
                         MySqlDataReader reader = cmd.ExecuteReader();
 
-                        string filePath = System.IO.Path.Combine(exportFolderPath, tableName + ".csv");
+                        string filePath = System.IO.Path.Combine(backupFolderPath, tableName + ".csv");
                         StreamWriter sw = new StreamWriter(filePath);
 
                         // записываем заголовки столбцов в CSV файл

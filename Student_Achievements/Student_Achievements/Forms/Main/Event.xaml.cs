@@ -60,7 +60,10 @@ namespace Student_Achievements
 
         private void ButMenu_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckUser.UserRole == "student")
+            DB_Connect dbConnect = new DB_Connect();
+            string userAccess = dbConnect.Fill_Access();
+
+            if (userAccess == "Староста")
             {
                 var MenuStudentForm = new MenuStudent();
                 Application.Current.MainWindow = MenuStudentForm;
@@ -792,23 +795,25 @@ namespace Student_Achievements
                     // Получаем выбранные ЛР из окна ChoiceStudent
                     selectedLR = ChoiceListResult.LRS;
 
-                    for (int i = 0; i < selectedLR.Length; i++)
+                    using (DB_Connect connection = new DB_Connect())
                     {
-                        if (selectedLR[i] != null && selectedLR[i] != "")
-                        {
-                            using (DB_Connect connection = new DB_Connect())
-                            {
-                                connection.OpenConnect();
+                        connection.OpenConnect();
 
-                                string sql = "SELECT id_list_result, list_result_description FROM list_result WHERE list_result_code = '" + selectedLR[i] + "';";
+                        for (int i = 0; i < selectedLR.Length; i++)
+                        {
+                            if (!string.IsNullOrEmpty(selectedLR[i]))
+                            {
+                                string sql = "SELECT id_list_result, list_result_code, list_result_description FROM list_result WHERE list_result_code = @code;";
                                 MySqlCommand com = new MySqlCommand(sql, connection.GetConnect());
+                                com.Parameters.AddWithValue("@code", selectedLR[i]);
                                 MySqlDataReader reader = com.ExecuteReader();
 
                                 if (reader.Read())
                                 {
                                     selectedLR2[i] = reader["id_list_result"].ToString();
+                                    string code = reader["list_result_code"].ToString();
                                     string description = reader["list_result_description"].ToString();
-                                    // Используйте значение description по вашему усмотрению
+                                    // Используйте значения code и description по вашему усмотрению
                                 }
                                 else
                                 {
@@ -817,11 +822,11 @@ namespace Student_Achievements
 
                                 reader.Close();
                             }
-                        }
-                        else
-                        {
-                            selectedLR[i] = "";
-                            selectedLR2[i] = "";
+                            else
+                            {
+                                selectedLR[i] = "";
+                                selectedLR2[i] = "";
+                            }
                         }
                     }
                 }
@@ -830,12 +835,6 @@ namespace Student_Achievements
                     MessageBox.Show("При загрузке модального окна выбора личностных результатов произошла ошибка: " + ex.Message, "Ошибка загрузки модального окна", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-        }
-
-
-        private void DgvEvent_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-        {
-
         }
 
         private void TbNameEvent_PreviewTextInput(object sender, TextCompositionEventArgs e)

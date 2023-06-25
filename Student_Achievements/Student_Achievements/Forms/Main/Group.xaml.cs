@@ -47,7 +47,10 @@ namespace Student_Achievements.Forms.Main
         
         private void ButMenu_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckUser.UserRole == "student")
+            DB_Connect dbConnect = new DB_Connect();
+            string userAccess = dbConnect.Fill_Access();
+
+            if (userAccess == "Староста")
             {
                 var MenuStudentForm = new MenuStudent();
                 Application.Current.MainWindow = MenuStudentForm;
